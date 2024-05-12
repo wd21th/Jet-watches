@@ -1,0 +1,189 @@
+.city {
+  // .city-list
+  &-list {
+    flex: 1;
+    padding: 0 20px;
+    overflow: scroll;
+
+    // .city-list__item
+    &__item {
+      display: flex;
+
+      h1 {
+        &:first-of-type {
+          flex: 1;
+        }
+      }
+    }
+  }
+  
+  // .city-name
+  &-name {
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: black;
+  }
+}
+
+.time {
+  // .time-list
+  &-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    height: 100%;
+    position: relative;
+
+    @media (max-width: 768px) {
+      &.snapping {
+        scroll-snap-type: y mandatory;
+        overflow-y: scroll;
+        height: 100%;
+      }
+    }
+  }
+
+  // .time-wrapper
+  &-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+
+    .clock {
+      // .clock-wrapper
+      &-wrapper {
+        height: fit-content;
+      }
+    }
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+
+  // .time-controls
+  &-controls {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    button {
+      position: relative;
+      background-color: white;
+
+      & + button {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .smal {
+    // .smal-serif
+    &-serif {
+      background-color: gray;
+    }
+  }
+}
+
+.select {
+  // .select-wrapper
+  &-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  // .select-search
+  &-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 5px 15px;
+  }
+
+  // .select-label
+  &-label {
+    margin-right: 10px;
+  }
+
+  // .select-select
+  &-select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #f1f1f1;
+  }
+
+  // .select-list
+  &-list {
+    position: absolute;
+    top: 100%;
+    opacity: 0;
+    visibility: hidden;
+    background-color: white;
+    width: 100%;
+    padding: 5px 0px;
+    transition: all 0.3s ease-out;
+    max-height: 300px;
+    overflow-y: scroll;
+
+    // .select-list-item
+    &-item {
+      padding: 5px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #f1f1f1;
+      }
+    }
+
+    &.show {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  .bounce {
+    width: 18px;
+    height: 18px;
+    background-color: #333;
+    border-radius: 100%;
+    display: inline-block;
+    animation: bounce 2s infinite ease-in-out;
+    
+    
+    &:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    &:nth-child(2) {
+      animation-delay: -1s;
+    }
+
+    &:nth-child(3) {
+      animation-delay: -0.5s;
+    }
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1);
+    }
+  }
+}

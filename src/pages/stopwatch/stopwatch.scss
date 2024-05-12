@@ -1,0 +1,81 @@
+:root {
+  --size: 470px;
+  --rotate-quantifier: 1.1;
+}
+
+.stopwatch {
+  width: var(--size);
+  height: var(--size);
+  position: relative;
+  transition: all 0.1s ease-in-out;
+
+  // .stopwatch-wrapper
+  &-wrapper {
+    padding: 10px;
+    position: relative;
+    width: calc(var(--size) * var(--rotate-quantifier));
+    height: calc(var(--size) * var(--rotate-quantifier));
+    transition: all 0.1s ease-in-out;
+    margin: 0 auto;
+
+    @media (max-width: 600px) {
+      width: 100%;
+      height: 100vw;
+    }
+  }
+
+  // .stopwatch-time
+  &-time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+
+    span {
+      min-width: 22px;
+      text-align: center;
+    }
+  }
+
+  // .stopwatch-controls
+  &-controls {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    transition: all 0.1s ease-in-out;
+    
+    svg {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  // .stopwatch-marks
+  &-marks {
+    scroll-snap-type: both mandatory;
+    overscroll-behavior-x: contain;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    height: 100%;
+    
+    .mark {
+      display: flex;
+      max-width: 300px;
+      margin: 0 auto;
+      padding: 10px 0;
+      align-items: center;
+      scroll-snap-align: start;
+    }
+  }
+  
+  .arrow {
+    transition: transform 1s linear;
+  }
+  
+  @media (max-width: 600px) {
+    width: calc((100% / var(--rotate-quantifier)) - 20px);
+    height: calc((100vw / var(--rotate-quantifier)) - 20px);
+  }
+}

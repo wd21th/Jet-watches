@@ -1,0 +1,125 @@
+.page {
+  .timer {
+    transition: transform 3s linear;
+
+    // .timer-controls
+    &-controls {
+      display: flex;
+      gap: 10px;
+
+      &.btns {
+        flex: 1;
+      }
+      
+      &:last-of-type {
+        flex: 1;
+        align-items: center;
+      }
+
+      .number {
+        position: relative;
+      }
+
+      svg {
+        width: 48px;
+        height: 48px;
+      }
+    }
+
+    .super-small-serif {
+      background-color: black;
+      top: 0;
+    }
+  }
+}
+
+.digits {
+  display: flex;
+
+  .digit {
+    width: 13px;
+    text-align: center;
+  }
+
+  .separator {
+    margin: 0 3px;
+  }
+}
+
+.hours, .minutes, .seconds {
+  scroll-snap-points-y: repeat(3rem);
+  position: relative;
+  overflow-x: hidden;
+  clip-path: inset(1px);
+
+  &::before {
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f1f1f1;
+  }
+}
+
+.gradient {
+  // .gradient-wrapper
+  &-wrapper {
+    position: relative;
+    overflow: hidden;
+    
+    .liner-top-gradient {
+      height: 100%;
+      position: absolute;
+      top: 0;
+      width: 70px;
+      background: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(250, 247, 247, 0) 70%);
+      transform: translateY(15px);
+      pointer-events: none;
+    }
+  
+    .liner-bottom-gradient {
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 70px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(250, 247, 247, 0) 70%);
+      transform: translateY(-15px);
+      pointer-events: none;
+    }
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+.rotate {
+  animation-name: rotate;
+  animation-timing-function: linear;
+}
+
+.hours,
+.minutes,
+.seconds {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  width: 70px;
+  text-align: center;
+  font-size: 32px;
+  scroll-snap-type: both mandatory;
+  overscroll-behavior-x: contain;
+
+  div {
+    scroll-snap-align: start;
+  }
+}
+
+.hours::webkit-scrollbar,
+.minutes::webkit-scrollbar,
+.seconds::webkit-scrollbar {
+  display: none;
+}

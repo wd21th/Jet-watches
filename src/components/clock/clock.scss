@@ -1,0 +1,141 @@
+.clock {
+  width: var(--size);
+  height: var(--size);
+  position: relative;
+  transition: all 0.1s ease-in-out;
+  margin: 0 auto;
+  color: red;
+  border-radius: 50%;
+
+  // .clock-dark
+  &-dark {
+    background-color: black;
+
+    .serif {
+      background-color: white;
+
+      // .serif-text
+      &-text {
+        color: white;
+        font-weight: bold;
+      }
+  
+      @media (max-width: 768px) {
+        height: 1px;
+      }
+    }
+
+    .smal-serif {
+      background-color: gray;
+    }
+  }
+
+  // .clock-wrapper
+  &-wrapper {
+    padding: 10px;
+    position: relative;
+    width: calc(var(--size) * var(--rotate-quantifier));
+    transition: all 0.1s ease-in-out;
+    margin: 0 auto;
+    overflow: hidden;
+
+    @media (max-width: 600px) {
+      width: 100%;
+    }
+  }
+
+  // .clock-body
+  &-body {
+    position: relative;
+  }
+
+  // .clock-time
+  &-time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    span {
+      min-width: 22px;
+      text-align: center;
+    }
+  }
+
+  // .clock-controls
+  &-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    transition: all 0.1s ease-in-out;
+
+    svg {
+      width: 48px;
+      height: 48px;
+    }
+  }
+  
+  .arrow {
+    transition: transform 1s linear;
+  }
+
+  @media (max-width: 600px) {
+    width: calc((100vw / var(--rotate-quantifier)) - 20px);
+    height: calc((100vw / var(--rotate-quantifier)) - 20px);
+  }
+}
+
+.minute-hand {
+  .line {
+    position: absolute;
+    width: 5px;
+    height: calc(50% - 150px);
+    top: 78px;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    background-color: black;
+    border-radius: 10px;
+    z-index: 2;
+
+    @media (max-width: 768px) {
+      height: 50px;
+    }
+  }
+}
+
+.hour-hand {
+  .line {
+    position: absolute;
+    width: 5px;
+    height: calc(50% - 180px);
+    top: 108px;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    background-color: black;
+    border-radius: 10px;
+    z-index: 2;
+
+    @media (max-width: 768px) {
+      height: 30px;
+    }
+  }
+}
+
+.arrow-w.hour-hand {
+  &::after {
+    content: '';
+    position: absolute;
+    height: calc(50% - 100px);
+    top: 100px;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    background-color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    z-index: 1;
+  }
+}
